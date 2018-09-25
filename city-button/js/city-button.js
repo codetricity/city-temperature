@@ -52,6 +52,11 @@ var cityColor = d3.scaleOrdinal()
 
 var circles;
 
+d3.selectAll('label')
+    .style('color', function(d, i) {
+        return cityColor(cities[i]);
+    });
+
 function getCity() {
     svg.selectAll('circle').remove();
     let city = this.value;
@@ -85,13 +90,16 @@ function drawCity(circles, cityName){
         .attr("cx", function(d){
             return monthPosition(d.month);
         })
-        .attr("cy", function(d){
-            return yScale(d[cityName]);
-        })
+
         .attr("r", "5")
         .attr("fill", function(){
             var color = cityColor(cityName);
             console.log(color);
             return color;
-        });
+        })
+        .transition()
+        .attr("cy", function(d){
+            return yScale(d[cityName]);
+        })
+        .duration(1000);
 }

@@ -41,6 +41,7 @@ svg.append("g")
     .attr("transform", "translate(0, " +  height + ")")
     .call(xAxis);
 
+// sequence of cities must match sequence in form    
 var cities = [
     "honolulu", "palo alto", "los angeles",
     "chicago", "boston"];
@@ -48,10 +49,15 @@ var cities = [
 var cityColor = d3.scaleOrdinal()
     .domain(cities)
     .range(d3.schemeSet2);
-    // .range(["orange", "brown", "red", "blue", "purple"]);
 
+// make global variable
 var circles;
 
+
+/*  add colors to labels.
+    this will only work if the sequence of cities
+    in the form matches the array.
+ */
 d3.selectAll('label')
     .style('color', function(d, i) {
         return cityColor(cities[i]);
@@ -94,7 +100,6 @@ function drawCity(circles, cityName){
         .attr("r", "5")
         .attr("fill", function(){
             var color = cityColor(cityName);
-            console.log(color);
             return color;
         })
         .transition()

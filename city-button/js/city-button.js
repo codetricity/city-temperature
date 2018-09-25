@@ -53,9 +53,16 @@ var cityColor = d3.scaleOrdinal()
 var circles;
 
 function getCity() {
-    let city = this.value;
     svg.selectAll('circle').remove();
-    drawCity(circles, city);
+    let city = this.value;
+    if (city == "all") {
+        for (let i=0; i<cities.length; i++) {
+            drawCity(circles, cities[i]);
+        }
+
+    } else {
+        drawCity(circles, city);
+    }
 }
 
 var buttons = d3.selectAll('input');

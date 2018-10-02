@@ -1,6 +1,6 @@
 const width = 600;
 const height = 400;
-const margin = { left: 100, top: 50, right: 50, bottom: 100 };
+const margin = { left: 120, top: 50, right: 50, bottom: 100 };
 const svgHeight = height + margin.top + margin.bottom;
 const svgWidth = width + margin.right + margin.left;
 
@@ -43,10 +43,25 @@ d3.csv('data/state.csv').then((data) => {
     .data(data)
     .enter()
     .append('circle')
-    .attr('r', '5')
+    .attr('r', '10')
     .attr('cy', d => yScale(d.population))
     .attr('cx', (d) => {
       const offset = xScale.bandwidth() / 2;
       return xScale(d.state) + offset;
-    });
+    })
+    .attr('fill', (d, i) => d3.schemeAccent[i]);
 });
+
+svg.append('text')
+  .attr('class', 'title')
+  .text('2016 Population in US States')
+  .attr('x', width / 2)
+  .attr('y', -20)
+  .attr('text-anchor', 'middle');
+
+svg.append('text')
+  .attr('class', 'axis')
+  .text('2016 Population')
+  .attr('x', -100)
+  .attr('y', height / 2)
+  .attr('transform', `rotate(-90, -100, ${height / 2})`);

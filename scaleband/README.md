@@ -146,3 +146,7 @@ For cx, apply offset for the bandwidth.
 2. y axis title
 3. x axis title
 
+https://github.com/d3/d3-scale-chromatic
+
+![color chart](doc/img/chartcolor.png)
+

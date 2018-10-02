@@ -65,3 +65,10 @@ svg.append('text')
   .attr('x', -100)
   .attr('y', height / 2)
   .attr('transform', `rotate(-90, -100, ${height / 2})`);
+
+svg.append('text')
+  .attr('class', 'axis')
+  .text('10 US States')
+  .attr('x', width / 2)
+  .attr('text-anchor', 'middle')
+  .attr('y', height + 40);

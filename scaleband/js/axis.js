@@ -11,7 +11,7 @@ const svg = d3.select('body').append('svg')
   .attr('transform', `translate( ${margin.left}, ${margin.top})`);
 
 d3.csv('data/state.csv').then((data) => {
-  let states = [];
+  let states = []; // eslint-disable-line prefer-const
   data.forEach((d) => {
     d.population = +d.population; // eslint-disable-line no-param-reassign
     states.push(d.state);
